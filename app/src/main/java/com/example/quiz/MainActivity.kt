@@ -20,7 +20,7 @@ import com.example.quiz.VMs.Room.QuizVM
 import com.example.quiz.VMs.Room.Repository
 import com.example.quiz.VMs.Room.db
 import com.example.quiz.lsPages.LoginComp
-import com.example.quiz.quizPage.QuizComp
+import com.example.quiz.quizPage.HomePage
 import com.example.quiz.ui.theme.QuizTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     val model = QuizVM(viewModel,this , navController = navStateBig )
 
 
-                    NavHost(navController = navStateBig , startDestination = "signupPage" ){
+                    NavHost(navController = navStateBig , startDestination = "quizPage" ){
                         composable("signupPage"){
                             SignupComp(navStateBig , model)
                         }
@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
                             LoginComp(navStateBig , model)
                         }
                         composable("quizPage"){
-                            QuizComp(navStateBig , model)
+                            HomePage(navStateBig , model)
                         }
 
                     }
