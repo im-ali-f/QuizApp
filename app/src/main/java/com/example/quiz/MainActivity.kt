@@ -20,6 +20,7 @@ import com.example.quiz.VMs.Room.QuizVM
 import com.example.quiz.VMs.Room.Repository
 import com.example.quiz.VMs.Room.db
 import com.example.quiz.lsPages.LoginComp
+import com.example.quiz.quizPage.QuizComp
 import com.example.quiz.ui.theme.QuizTheme
 
 class MainActivity : ComponentActivity() {
@@ -47,6 +48,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("loginPage"){
                             LoginComp(navStateBig , model)
+                        }
+                        composable("quizPage"){
+                            QuizComp(navStateBig , model)
                         }
 
                     }
