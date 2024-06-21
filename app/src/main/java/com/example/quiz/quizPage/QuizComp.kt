@@ -39,15 +39,12 @@ import com.example.quiz.VMs.Room.MainViewModel
 import com.example.quiz.VMs.Room.QuizVM
 
 
-
-
-
 @Composable
 fun HomePage(
     navController: NavController,
     model: QuizVM,
 
-) {
+    ) {
     val navControllerInner = rememberNavController()
     NavHost(navController = navControllerInner, startDestination = "homePage") {
         composable("homePage") {
@@ -62,6 +59,7 @@ fun HomePage(
                                     .clip(RoundedCornerShape(0, 0, 40, 40))
                                     .padding(end = 5.dp),
                                 verticalAlignment = Alignment.CenterVertically,
+                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
@@ -77,21 +75,52 @@ fun HomePage(
                                             textAlign = TextAlign.Center,
                                             color = MaterialTheme.colorScheme.onTertiary
                                         )
-                                        Spacer(modifier = Modifier.height(10.dp))
-                                        Box(
-                                            Modifier
-                                                .fillMaxWidth()
-                                                .height(10.dp)
-                                        ) {
-                                            Box(
-                                                modifier = Modifier
-                                                    .height(1.dp)
-                                                    .background(MaterialTheme.colorScheme.onTertiary)
-                                                    .fillMaxWidth()
-                                            )
-                                        }
+
                                     }
+
+
                                 }
+
+                                Text(
+                                    modifier = Modifier
+                                        .padding(top = 10.dp)
+                                        .clip(RoundedCornerShape(16.dp))
+                                        .clickable {
+                                            model.LogoutFunctionallity()
+                                        }
+
+                                        .background(Color.Red)
+                                        .padding(
+                                            paddingValues = PaddingValues(
+                                                end = 10.dp,
+                                                top = 5.dp,
+                                                bottom = 5.dp,
+                                                start = 10.dp
+                                            )
+                                        )
+                                        ,
+                                    text = "Log Out",
+                                    fontWeight = FontWeight(600),
+                                    fontSize = 16.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = Color.White
+                                )
+
+
+                            }
+
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Box(
+                                Modifier
+                                    .fillMaxWidth()
+                                    .height(10.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .height(1.dp)
+                                        .background(MaterialTheme.colorScheme.onTertiary)
+                                        .fillMaxWidth()
+                                )
                             }
                             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                                 val scrollState = rememberScrollState()
@@ -149,6 +178,7 @@ fun HomePage(
                             .clip(RoundedCornerShape(0, 0, 40, 40))
                             .padding(end = 5.dp),
                         verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -164,21 +194,52 @@ fun HomePage(
                                     textAlign = TextAlign.Center,
                                     color = MaterialTheme.colorScheme.onTertiary
                                 )
-                                Spacer(modifier = Modifier.height(10.dp))
-                                Box(
-                                    Modifier
-                                        .fillMaxWidth()
-                                        .height(10.dp)
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .height(1.dp)
-                                            .background(MaterialTheme.colorScheme.onTertiary)
-                                            .fillMaxWidth()
-                                    )
-                                }
+
                             }
+
+
                         }
+
+                        Text(
+                            modifier = Modifier
+                                .padding(top = 10.dp)
+                                .clip(RoundedCornerShape(16.dp))
+                                .clickable {
+                                    model.LogoutFunctionallity()
+                                }
+
+                                .background(Color.Red)
+                                .padding(
+                                    paddingValues = PaddingValues(
+                                        end = 10.dp,
+                                        top = 5.dp,
+                                        bottom = 5.dp,
+                                        start = 10.dp
+                                    )
+                                )
+                            ,
+                            text = "Log Out",
+                            fontWeight = FontWeight(600),
+                            fontSize = 16.sp,
+                            textAlign = TextAlign.Center,
+                            color = Color.White
+                        )
+
+
+                    }
+
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .height(10.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .height(1.dp)
+                                .background(MaterialTheme.colorScheme.onTertiary)
+                                .fillMaxWidth()
+                        )
                     }
                     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                         val scrollState = rememberScrollState()
@@ -266,7 +327,9 @@ fun HomePage(
                                     text = "Correct",
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(8.dp))
-                                        .clickable { model.adminCorrectAns.value = (index + 1).toString() }
+                                        .clickable {
+                                            model.adminCorrectAns.value = (index + 1).toString()
+                                        }
                                         .padding(5.dp)
                                         .background(if (model.adminCorrectAns.value == (index + 1).toString()) Color.Green else Color.Transparent)
                                         .padding(5.dp),
