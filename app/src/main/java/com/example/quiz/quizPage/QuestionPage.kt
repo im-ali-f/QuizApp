@@ -17,9 +17,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -48,6 +51,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
@@ -117,9 +121,11 @@ fun QuestionComp(
                     listOf(Color(0xFF737FA3), Color(0xFFE6E1E0))
                 )
 
+                var scrollState = rememberScrollState()
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
+                        .verticalScroll(scrollState)
                         .background(Color(0xFF2C2C2C))
                         .padding(24.dp),
                     verticalArrangement = Arrangement.SpaceBetween
@@ -178,16 +184,17 @@ fun QuestionComp(
                                 },
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(60.dp)
                                     .clip(RoundedCornerShape(12.dp)),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 ),
+                                shape = RoundedCornerShape(16.dp),
                                 contentPadding = PaddingValues(0.dp)
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .fillMaxSize()
+                                        .fillMaxWidth()
+                                        .heightIn(min=60.dp)
                                         .background(brush),
                                     contentAlignment = Alignment.Center
                                 ) {
@@ -233,7 +240,8 @@ fun QuestionComp(
                 }
             }
         }
-    } else {
+    }
+    else {
         Log.d("TAG", "QuestionComp: Not enough questions available!")
     }
 }

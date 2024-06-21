@@ -23,6 +23,7 @@ import com.example.quiz.VMs.Room.db
 import com.example.quiz.lsPages.LoginComp
 import com.example.quiz.quizPage.HomePage
 import com.example.quiz.quizPage.QuestionComp
+import com.example.quiz.quizPage.ScoreComp
 import com.example.quiz.ui.theme.QuizTheme
 
 class MainActivity : ComponentActivity() {
@@ -64,7 +65,7 @@ class MainActivity : ComponentActivity() {
                             BackHandler(true) {
                                 // do nothing
                             }
-                            //ScoreComp(navState,model)
+                            ScoreComp(navStateBig,model)
                         }
 
                     }

@@ -100,7 +100,6 @@ fun HomePage(
                                         .fillMaxSize()
                                         .padding(20.dp)
                                         .verticalScroll(scrollState),
-                                    verticalArrangement = Arrangement.Center,
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                     val brushBTN = Brush.linearGradient(
@@ -115,20 +114,19 @@ fun HomePage(
                                             navController.navigate("questionPage")
                                         },
                                         modifier = Modifier
-                                            .fillMaxWidth()
+                                            .align(Alignment.CenterHorizontally)
+                                            .fillMaxWidth(0.5f)
                                             .height(60.dp)
-                                            .clip(RoundedCornerShape(5.dp))
-                                            .background(brushBTN),
-                                        contentPadding = PaddingValues(0.dp),
-                                        shape = RoundedCornerShape(5.dp),
+                                            .clip(RoundedCornerShape(12.dp)),
                                         colors = ButtonDefaults.buttonColors(
-                                            containerColor = Color.Transparent
-                                        )
+                                            containerColor = Color(0xFF1E88E5)
+                                        ),
+                                        contentPadding = PaddingValues(0.dp)
                                     ) {
                                         Text(
                                             modifier = Modifier.offset(y = -5.dp),
                                             textAlign = TextAlign.Center,
-                                            text = "شروع!",
+                                            text = " Start Quiz",
                                             color = Color.White,
                                             fontSize = 24.sp,
                                             fontWeight = FontWeight(600)
