@@ -48,8 +48,8 @@ class QuizVM(
     val loggedInUser = mutableStateOf(
         UserInfo(
             id = 0,
-            //role = "member",
-            role = "admin",
+            role = "member",
+            //role = "admin",
             password = "123",
             name = "ali",
             firstname = "ali",
@@ -164,7 +164,7 @@ class QuizVM(
             mainViewModel.InsertQuestion(bodyToSend)
 
 
-/*
+
             adminText.value = ""
             adminAns1.value = ""
             adminAns2.value = ""
@@ -172,7 +172,7 @@ class QuizVM(
             adminAns4.value = ""
             adminCorrectAns.value = ""
 
- */
+
 
 
         }
