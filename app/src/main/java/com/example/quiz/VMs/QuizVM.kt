@@ -32,10 +32,10 @@ class QuizVM(
     val canContinueLogin = mutableStateOf(false)
 
 
-    /* val loggedInUser = mutableStateOf(
-         UserInfoResponseListItem(
+     val loggedInUser = mutableStateOf(
+         UserInfo(
              role = "",
-             id = "",
+             id = 0,
              password = "",
              name = "",
              firstname = "",
@@ -43,8 +43,9 @@ class QuizVM(
          )
      )
 
-     */
+
     //for test
+    /*
     val loggedInUser = mutableStateOf(
         UserInfo(
             id = 0,
@@ -56,6 +57,8 @@ class QuizVM(
             lastname = "farhad"
         )
     )
+
+     */
 
 
     fun LoginFunctionallity() {
@@ -184,6 +187,7 @@ class QuizVM(
     val correctAns = mutableStateOf(0)
 
     fun LogoutFunctionallity() {
+        navController.navigate("loginPage")
         loggedInUser.value = UserInfo(
             id = 0,
             role = "",
@@ -201,7 +205,7 @@ class QuizVM(
         signupAdminRole.value = "member"
         canContinueSignup.value = false
         canContinueLogin.value = false
-        navController.navigate("loginPage")
+
 
     }
 

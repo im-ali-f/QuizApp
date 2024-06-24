@@ -194,7 +194,7 @@ fun QuestionComp(
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .heightIn(min=60.dp)
+                                        .heightIn(min = 60.dp)
                                         .background(brush),
                                     contentAlignment = Alignment.Center
                                 ) {
@@ -243,6 +243,37 @@ fun QuestionComp(
     }
     else {
         Log.d("TAG", "QuestionComp: Not enough questions available!")
+        Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center , horizontalAlignment = Alignment.CenterHorizontally){
+            Text(
+                text = "Not enough questions available!",
+                color = MaterialTheme.colorScheme.onTertiary,
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                onClick = {
+                    navController.navigate("quizPage")
+                    model.correctAns.value = 0
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                shape = RoundedCornerShape(8.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF1E88E5)
+                )
+            ) {
+                Text(
+                    text = "Back to Home",
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            
+        }
+
     }
 }
 

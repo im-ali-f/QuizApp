@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     val model = QuizVM(viewModel,this , navController = navStateBig )
 
 
-                    NavHost(navController = navStateBig , startDestination = "quizPage" ){
+                    NavHost(navController = navStateBig , startDestination = "signupPage" ){
                         composable("signupPage"){
                             SignupComp(navStateBig , model)
                         }
