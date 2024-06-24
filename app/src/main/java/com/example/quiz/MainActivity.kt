@@ -2,6 +2,7 @@ package com.example.quiz
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +21,9 @@ import com.example.quiz.VMs.Room.QuizVM
 import com.example.quiz.VMs.Room.Repository
 import com.example.quiz.VMs.Room.db
 import com.example.quiz.lsPages.LoginComp
+import com.example.quiz.quizPage.HomePage
+import com.example.quiz.quizPage.QuestionComp
+import com.example.quiz.quizPage.ScoreComp
 import com.example.quiz.ui.theme.QuizTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,12 +45,27 @@ class MainActivity : ComponentActivity() {
                     val model = QuizVM(viewModel,this , navController = navStateBig )
 
 
-                    NavHost(navController = navStateBig , startDestination = "signupPage" ){
+                    NavHost(navController = navStateBig , startDestination = "quizPage" ){
                         composable("signupPage"){
                             SignupComp(navStateBig , model)
                         }
                         composable("loginPage"){
                             LoginComp(navStateBig , model)
+                        }
+                        composable("quizPage"){
+                            HomePage(navStateBig , model)
+                        }
+                        composable(route = "questionPage"){
+                            BackHandler(true) {
+                                // do nothing
+                            }
+                            QuestionComp(navController = navStateBig , model =model, mainViewModel =viewModel , owner = owner)
+                        }
+                        composable(route = "showScorePage"){
+                            BackHandler(true) {
+                                // do nothing
+                            }
+                            ScoreComp(navStateBig,model)
                         }
 
                     }

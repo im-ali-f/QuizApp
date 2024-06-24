@@ -29,6 +29,7 @@ class QuizVM(
     val signupAdminRole = mutableStateOf("member")
 
     val canContinueSignup = mutableStateOf(false)
+    val canContinueLogin = mutableStateOf(false)
 
 
     /* val loggedInUser = mutableStateOf(
@@ -47,8 +48,8 @@ class QuizVM(
     val loggedInUser = mutableStateOf(
         UserInfo(
             id = 0,
-            role = "member",
-            //role = "admin",
+            //role = "member",
+            role = "admin",
             password = "123",
             name = "ali",
             firstname = "ali",
@@ -58,7 +59,26 @@ class QuizVM(
 
 
     fun LoginFunctionallity() {
+        checkToContinue2()
+        if (canContinueLogin.value) {
+            mainViewModel.GetUserInfo(loginEnteredUsername.value)
+            mainViewModel.GetUserInfoResponse.observe(owner, Observer { response ->
+                if(response.isEmpty()){
+                    Log.d("ROOM", "loginFunctionallity: user not exist ")
 
+
+                }
+                else{
+                    Log.d("ROOM", "loginFunctionallity: user exist ")
+                    if(response[0].password == loginEnteredPassword.value){
+                        loggedInUser.value = response[0]
+                        navController.navigate("quizPage")
+                    }
+                }
+                mainViewModel.GetUserInfoResponse = MutableLiveData()
+            })
+
+        }
     }
 
     fun SignupFunctionallity() {
@@ -99,10 +119,17 @@ class QuizVM(
 
     }
 
-    fun checkUserExistance(username :String){
+    fun checkToContinue2() {
+        if(loginEnteredPassword.value != "" && loginEnteredUsername.value != ""){
+            canContinueLogin.value = true
+        }
+        else{
+            canContinueLogin.value = false
 
+        }
 
     }
+
 
 
     //admin
@@ -146,6 +173,8 @@ class QuizVM(
             adminCorrectAns.value = ""
 
 
+
+
         }
 
 
@@ -154,5 +183,28 @@ class QuizVM(
     //answar
     val correctAns = mutableStateOf(0)
 
+    fun LogoutFunctionallity() {
+        loggedInUser.value = UserInfo(
+            id = 0,
+            role = "",
+            password = "",
+            name = "",
+            firstname = "",
+            lastname = ""
+        )
+        loginEnteredPassword.value = ""
+        loginEnteredUsername.value = ""
+        signupEnteredFirstname.value = ""
+        signupEnteredLastName.value = ""
+        signupEnteredUsername.value = ""
+        signupEnteredPassword.value = ""
+        signupAdminRole.value = "member"
+        canContinueSignup.value = false
+        canContinueLogin.value = false
+        navController.navigate("loginPage")
+
+    }
+
 
 }
+
