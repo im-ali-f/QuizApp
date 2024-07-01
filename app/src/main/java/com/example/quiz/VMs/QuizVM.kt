@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.quiz.VMs.Room.lsRoom.UserInfo
+import kotlin.random.Random
 
 class QuizVM(
     private val mainViewModel: MainViewModel,
@@ -179,6 +180,55 @@ class QuizVM(
 
 
         }
+
+
+    }
+
+    fun addDefaultQuestion(){
+
+            var bodyToSend = RoomModel(
+                id = 0,
+                text = "soal shomare 11111",
+                correctAnswer = "${Random.nextInt(1, 5)}",
+                answer1 = "javab soal 1",
+                answer2 = "javabbbb \n testttt",
+                answer3 = "gozine  3",
+                answer4 = "javab 444444"
+            )
+            mainViewModel.InsertQuestion(bodyToSend)
+
+         bodyToSend = RoomModel(0, "What is the capital of France?", "1", "Paris", "London", "Berlin", "Madrid")
+        mainViewModel.InsertQuestion(bodyToSend)
+         bodyToSend = RoomModel(0, "Which planet is known as the Red Planet?", "3", "Earth", "Jupiter", "Mars", "Venus")
+        mainViewModel.InsertQuestion(bodyToSend)
+         bodyToSend = RoomModel(0, "Who wrote 'To Kill a Mockingbird'?", "2", "J.K. Rowling", "Harper Lee", "Mark Twain", "Ernest Hemingway")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "What is the largest mammal?", "4", "Elephant", "Giraffe", "Whale Shark", "Blue Whale")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "Which element has the chemical symbol 'O'?", "2", "Gold", "Oxygen", "Iron", "Silver")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "What is the smallest prime number?", "1", "2", "3", "1", "5")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "Who painted the Mona Lisa?", "3", "Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "What is the longest river in the world?", "4", "Amazon", "Yangtze", "Mississippi", "Nile")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "Which country is the largest by area?", "1", "Russia", "Canada", "China", "United States")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "Who developed the theory of relativity?", "4", "Isaac Newton", "Galileo Galilei", "Nikola Tesla", "Albert Einstein")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "What is the hardest natural substance on Earth?", "1", "Diamond", "Gold", "Iron", "Platinum")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "What is the main ingredient in traditional Japanese miso soup?", "3", "Chicken", "Beef", "Soybean paste", "Fish")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "Which country gifted the Statue of Liberty to the United States?", "4", "Germany", "Spain", "Italy", "France")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "What is the largest ocean on Earth?", "1", "Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean")
+        mainViewModel.InsertQuestion(bodyToSend)
+        bodyToSend =RoomModel(0, "In what year did the Titanic sink?", "2", "1905", "1912", "1920", "1898")
+        mainViewModel.InsertQuestion(bodyToSend)
+
+
 
 
     }

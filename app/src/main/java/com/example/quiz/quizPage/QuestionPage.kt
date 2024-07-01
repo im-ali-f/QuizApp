@@ -109,7 +109,8 @@ fun QuestionComp(
             ) {
                 CircularProgressIndicator(color = Color.White)
             }
-        } else {
+        }
+        else {
             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                 val correctBrush = Brush.linearGradient(
                     listOf(Color(0xFF5DC039), Color(0xFFE6E1E0))
@@ -242,6 +243,21 @@ fun QuestionComp(
         }
     }
     else {
+        model.addDefaultQuestion()
+        if (showPopUp) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF121212)),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(color = Color.White)
+            }
+        }
+        else{
+            navController.navigate("questionPage")
+        }
+        /*
         Log.d("TAG", "QuestionComp: Not enough questions available!")
         Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center , horizontalAlignment = Alignment.CenterHorizontally){
             Text(
@@ -274,6 +290,7 @@ fun QuestionComp(
             
         }
 
+         */
     }
 }
 
